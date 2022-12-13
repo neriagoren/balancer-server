@@ -2,8 +2,14 @@ const express = require('express')
 const app = express()
 const port = 8080
 
+const expenses = [{
+    id: 0,
+    category: 'Food',
+    value: 100,
+}]
+
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.json(expenses)
 })
 
 app.listen(port, () => {
