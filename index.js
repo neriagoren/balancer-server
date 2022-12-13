@@ -19,7 +19,7 @@ const expenses = [
         id: 0,
         category: 'Food',
         value: 100,
-        date: Date.now(),
+        date: subDays(Date.now(), 0),
     },
     {
         id: 1,
