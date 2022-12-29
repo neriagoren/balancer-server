@@ -6,7 +6,7 @@ const db = require('./db');
 const dotenv = require('dotenv');
 dotenv.config();
 
-app.use(cors());
+app.use(cors({ credentials: true }))
 
 app.get('/get-all-expenses', (req, res, next) => {
     db.pool.getConnection(async function (err, conn) {
