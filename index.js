@@ -6,13 +6,9 @@ const db = require('./db');
 const dotenv = require('dotenv');
 dotenv.config();
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    app.options('*', cors())
-    next();
-}
-);
-app.use(cors())
+app.use(cors({
+    origin: 'https://original-balancer.netlify.app'
+}));
 
 app.get('/get-all-expenses', (req, res, next) => {
     db.pool.getConnection(async function (err, conn) {
