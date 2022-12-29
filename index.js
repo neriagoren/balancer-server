@@ -27,6 +27,7 @@ app.get('/get-all-expenses', (req, res, next) => {
 })
 
 app.post('/add-expense', (req, res, next) => {
+    console.log(req)
     db.pool.getConnection(async function (err, conn) {
         if (err) {
             res.status(500).send({ message: 'something went wrong!' })
