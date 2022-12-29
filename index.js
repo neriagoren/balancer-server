@@ -6,7 +6,20 @@ const db = require('./db');
 const dotenv = require('dotenv');
 dotenv.config();
 
-app.use(cors({ credentials: true }))
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization, 'Content-Type' : 'multipart/form-data' ,* "
+    );
+    res.header(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
+    next();
+});
+
+app.use(cors())
 
 app.get('/get-all-expenses', (req, res, next) => {
     db.pool.getConnection(async function (err, conn) {
